@@ -47,6 +47,12 @@ Inputs:
 
 ## Full usage
 ```python
+"""
+Prior to usage:
+    - Run WhiskiWrap: Trace video.
+    - Run DLC:        Kmeans extract frames for labeling.
+"""
+
 # Change working directory
 cd 'full/path/to/whisk/directory/'
 

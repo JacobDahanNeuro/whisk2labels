@@ -1,5 +1,4 @@
 import os
-import h5py
 import pandas
 import numpy as np
 from tables import *

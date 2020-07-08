@@ -1,6 +1,9 @@
 # whisk2labels
 Extract C2 whisker from whiski data; convert whisker to joints.
 
+## NB
+Must use python2 conda environment (e.g., whiski_wrap).
+
 ## Add to usr path
 ```bash
 cd ~

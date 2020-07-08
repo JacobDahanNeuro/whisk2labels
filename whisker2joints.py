@@ -3,6 +3,12 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy.interpolate import interp1d
 
+def check_joint_labels(x_coords, y_coords, x_out, y_out):
+    plt.plot(x_coords, y_coords, 'o-');
+    plt.plot(x_out, y_out, 'or');
+    plt.axis('equal');
+    plt.show()
+
 def convert_whisker_to_joint_labels(x_coords, y_coords, n_joints):
     """
     Converts x- and y-coordinates into n equidistant joints.
@@ -15,4 +21,8 @@ def convert_whisker_to_joint_labels(x_coords, y_coords, n_joints):
     x_out, y_out          = fx(alpha), fy(alpha)
     coords                = zip(x_out, y_out)
     df                    = pandas.DataFrame(coords, columns=('y', 'x'))
+    
+    #Uncomment to check joint labels
+    #check_joint_labels(x_coords, y_coords, x_out, y_out)
+
     return df

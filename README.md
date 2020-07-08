@@ -1,6 +1,16 @@
 # whisk2labels
 Extract C2 whisker from whiski data; convert whisker to joints.
 
+## Add to usr path
+```bash
+cd ~
+mkdir src
+cd src
+git clone https://github.com/JacobDahan/whisk2labels.git
+# Note that USERNAME must be changed to individual username
+PYTHONPATH=$PYTHONPATH:home/USERNAME/src/whisk2labels/
+```
+
 ## find_and_segment_whisker
 Finds C2 whisker and segments into n joints.
 Saves output csv to present working directory.

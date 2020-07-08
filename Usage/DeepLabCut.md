@@ -12,6 +12,7 @@ config_path = deeplabcut.create_new_project('project_name', 'scorer', ['path/to/
 deeplabcut.extract_frames(conﬁg_path)
 
 # After running whisk2labels
+deeplabcut.convertcsv2h5(config_path)
 deeplabcut.check_labels(conﬁg_path)
 
 # After running remove_bad_frames

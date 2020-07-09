@@ -26,11 +26,10 @@ class Joints(IsDescription):
     time     = Int32Col()
 
 
-def print_progress_bar(iteration, max_iters, post_text):
+def print_progress_bar(iteration, max_iters, post_text, bar_size=40):
     """
     Prints progress bar for given function.
     """
-    bar_size = 20 
     j        = iteration/float(max_iters)
     percent  = str(100 * j)
     sys.stdout.write("\r" + " " * 5 + "[" + "=" * int(bar_size * j) + " " * (bar_size - int(bar_size * j)) + "]" + " " * 5 + percent + "%" + " " * 5 + post_text + "\r")

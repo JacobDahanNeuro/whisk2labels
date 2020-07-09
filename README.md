@@ -2,7 +2,8 @@
 Extract C2 whisker from whiski data; convert whisker to joints.
 
 ## NB
-Must use python2 conda environment (e.g., whiski_wrap).
+1. Must use python2 conda environment (e.g., whiski_wrap).
+2. PYTHONPATH must be exported in every new kernel.
 
 ## Add to usr path
 ```bash
@@ -11,7 +12,7 @@ mkdir src
 cd src
 git clone https://github.com/JacobDahan/whisk2labels.git
 # Note that USERNAME must be changed to individual username
-PYTHONPATH=$PYTHONPATH:home/USERNAME/src/whisk2labels/
+export PYTHONPATH=$PYTHONPATH:home/USERNAME/src/whisk2labels/
 ```
 
 ## find_and_segment_whisker

@@ -33,8 +33,7 @@ def print_progress_bar(iteration, max_iters, post_text):
     bar_size = 20 
     j        = iteration/float(max_iters)
     percent  = str(100 * j)
-    sys.stdout.write('\r')
-    sys.stdout.write("[" + "=" * int(bar_size * j) + " " * int(bar_size * (1-j)) + "]" + " " * 5 + percent + "%" + " " * 5 + post_text)
+    sys.stdout.write("\r" + " " * 5 + "[" + "=" * int(bar_size * j) + " " * (bar_size - int(bar_size * j)) + "]" + " " * 5 + percent + "%" + " " * 5 + post_text + "\r")
     sys.stdout.flush()
 
 

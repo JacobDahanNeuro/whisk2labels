@@ -94,6 +94,8 @@ def find_whisker(h5):
         longest_whisker = find_longest(whiskers)
         whiskers_to_trace.append(longest_whisker)
         print_progress_bar(iteration, max_iters, post_text)
+    
+    print('\nFinished finding longest whiskers.')
 
     table   = h5file.create_table(h5file.root, 'longest', Whisker, "Whiskers to track")
     whisker = table.row
@@ -133,6 +135,8 @@ def convert_to_joints(h5, n_joints):
         whisker   = [time, x_labels, y_labels]
         segmented_whiskers.append(whisker)
         print_progress_bar(iteration, max_iters, post_text)
+    
+    print('\nFinished converting whiskers to joints.')
     
     table   = h5file.create_table(h5file.root, 'joints', Joints, "Segmented whiskers")
     whisker = table.row

@@ -1,4 +1,5 @@
 import os
+import sys
 import pandas
 import numpy as np
 from tables import *
@@ -23,6 +24,18 @@ class Joints(IsDescription):
     x_coords = Float128Col(shape=(8, 1))
     y_coords = Float128Col(shape=(8, 1))
     time     = Int32Col()
+
+
+def print_progress_bar(iteration, max_iters, post_text):
+    """
+    Prints progress bar for given function.
+    """
+    bar_size = 20 
+    j        = iteration/float(max_iters)
+    percent  = str(100 * j)
+    sys.stdout.write('\r')
+    sys.stdout.write("[" + "=" * int(bar_size * j) + " " * int(bar_size * (1-j)) + "]" + " " * 5 + percent + "%" + " " * 5 + post_text)
+    sys.stdout.flush()
 
 
 def fill_list(src_list, targ_len):
@@ -73,12 +86,16 @@ def find_whisker(h5):
     whiskers_to_trace = []
 
     for unique_time in unique_times:
-        indices     = [idx for idx, time in enumerate(times) if time == unique_time]
-        start, stop = (indices[0], indices[-1])
-        whiskers    = []
+        iteration       = unique_times.index(unique_time)
+        max_iters       = len(unique_times)
+        post_text       = 'Finding longest whiskers.'
+        indices         = [idx for idx, time in enumerate(times) if time == unique_time]
+        start, stop     = (indices[0], indices[-1])
+        whiskers        = []
         [whiskers.append([time, x, y]) for x, y, time in zip(x_coords[start:stop+1], y_coords[start:stop+1], times[start:stop+1])]
-        longest_whisker  = find_longest(whiskers)
+        longest_whisker = find_longest(whiskers)
         whiskers_to_trace.append(longest_whisker)
+        print_progress_bar(iteration, max_iters, post_text)
 
     table   = h5file.create_table(h5file.root, 'longest', Whisker, "Whiskers to track")
     whisker = table.row
@@ -109,11 +126,15 @@ def convert_to_joints(h5, n_joints):
     segmented_whiskers = []
 
     for x, y, time in zip(x_coords, y_coords, times):
-        df       = convert_whisker_to_joint_labels(x, y, n_joints)
-        x_labels = df['x'].tolist()
-        y_labels = df['y'].tolist()
-        whisker  = [time, x_labels, y_labels]
+        iteration = time.index(times)
+        max_iters = len(times)
+        post_text = 'Converting whiskers to joints.'
+        df        = convert_whisker_to_joint_labels(x, y, n_joints)
+        x_labels  = df['x'].tolist()
+        y_labels  = df['y'].tolist()
+        whisker   = [time, x_labels, y_labels]
         segmented_whiskers.append(whisker)
+        print_progress_bar(iteration, max_iters, post_text)
     
     table   = h5file.create_table(h5file.root, 'joints', Joints, "Segmented whiskers")
     whisker = table.row

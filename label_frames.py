@@ -32,7 +32,7 @@ def print_progress_bar(iteration, max_iters, post_text, bar_size=40):
     """
     j        = iteration/float(max_iters)
     percent  = str(100 * j)
-    sys.stdout.write("\r" + " " * 7 + "[" + "=" * int(bar_size * j) + " " * (bar_size - int(bar_size * j)) + "]" + " " * 5 + percent + "%" + " " * 5 + post_text + "\r")
+    sys.stdout.write("\r" + " " * 8 + "[" + "=" * int(bar_size * j) + " " * (bar_size - int(bar_size * j)) + "]" + " " * 5 + percent + "%" + " " * 5 + post_text + "\r")
     sys.stdout.flush()
 
 
@@ -104,10 +104,14 @@ def find_whisker(h5):
     whisker = table.row
 
     for frame in whiskers_to_trace:
+        iteration           = frame.index(whiskers_to_trace)
+        max_iters           = len(whiskers_to_trace)
+        post_text           = 'Appending longest whiskers to hdf5 file.'
         whisker['time']     = frame[0]
         whisker['x_coords'] = np.array([coord for coord in fill_list(frame[1], 1000)]).reshape((1000,1))
         whisker['y_coords'] = np.array([coord for coord in fill_list(frame[2], 1000)]).reshape((1000,1))
         whisker.append()
+        print_progress_bar(iteration, max_iters, post_text)
         
     table.flush()
     h5file.close()
@@ -141,10 +145,14 @@ def convert_to_joints(h5, n_joints):
     whisker = table.row
 
     for frame in segmented_whiskers:
+        iteration           = frame.index(segmented_whiskers)
+        max_iters           = len(segmented_whiskers)
+        post_text           = 'Appending whisker joints to hdf5 file.'
         whisker['time']     = frame[0]
         whisker['x_coords'] = np.array([coord for coord in frame[1]]).reshape((n_joints,1))
         whisker['y_coords'] = np.array([coord for coord in frame[2]]).reshape((n_joints,1))
         whisker.append()
+        print_progress_bar(iteration, max_iters, post_text)
         
     table.flush()
     h5file.close()

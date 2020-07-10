@@ -125,7 +125,7 @@ def convert_to_joints(h5, n_joints):
     segmented_whiskers = []
 
     for x, y, time in zip(x_coords, y_coords, times):
-        iteration = time.index(times)
+        iteration = times.index(time)
         max_iters = len(times)
         post_text = 'Converting whiskers to joints.'
         df        = convert_whisker_to_joint_labels(x, y, n_joints)

@@ -32,7 +32,7 @@ def print_progress_bar(iteration, max_iters, post_text, bar_size=40):
     """
     j        = iteration/float(max_iters)
     percent  = str(100 * j)
-    sys.stdout.write("\r" + " " * 5 + "[" + "=" * int(bar_size * j) + " " * (bar_size - int(bar_size * j)) + "]" + " " * 5 + percent + "%" + " " * 5 + post_text + "\r")
+    sys.stdout.write("\r" + " " * 7 + "[" + "=" * int(bar_size * j) + " " * (bar_size - int(bar_size * j)) + "]" + " " * 5 + percent + "%" + " " * 5 + post_text + "\r")
     sys.stdout.flush()
 
 
@@ -76,21 +76,21 @@ def find_whisker(h5):
     Predict which traced whisker is C2 by finding longest whisker in each frame.
     Returns new hdf5 table with row tracing all C2 x and y coords for each frame.
     """
-    h5file            = open_file(h5, mode="r+")
-    x_coords          = [row.tolist() for row in h5file.root.pixels_x.iterrows()]
-    y_coords          = [row.tolist() for row in h5file.root.pixels_y.iterrows()]
-    times             = [int(row['time']) for row in h5file.root.summary.iterrows()]
-    unique_times      = list(np.unique((np.array(times))))
-    whiskers_to_trace = []
+    h5file             = open_file(h5, mode="r+")
+    x_coords           = [row.tolist() for row in h5file.root.pixels_x.iterrows()]
+    y_coords           = [row.tolist() for row in h5file.root.pixels_y.iterrows()]
+    times              = [int(row['time']) for row in h5file.root.summary.iterrows()]
+    unique_times, idxs = np.unique((np.array(times)), return_index=True)
+    unique_times, idxs = list(unique_times), list(idxs)
 
     for idx, unique_time in enumerate(unique_times):
         iteration        = unique_times.index(unique_time)
         max_iters        = len(unique_times)
         post_text        = 'Finding longest whiskers.'
         next_unique_time = unique_times[idx + 1]
-        start            = times.index(unique_time)
-        stop             = times.index(next_unique_time) - 1
-        whiskers         = [[time1, x, y] for x, y, time1 in zip(x_coords[start:stop+1], y_coords[start:stop+1], times[start:stop+1])]
+        start            = idxs[idx]
+        stop             = idxs[idx + 1] - 1
+        whiskers         = [[time, x, y] for x, y, time in zip(x_coords[start:stop+1], y_coords[start:stop+1], times[start:stop+1])]
         longest_whisker  = find_longest(whiskers)
         whiskers_to_trace.append(longest_whisker)
         print_progress_bar(iteration, max_iters, post_text)

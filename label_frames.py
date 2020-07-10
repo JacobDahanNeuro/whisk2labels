@@ -88,7 +88,6 @@ def find_whisker(h5):
         iteration        = unique_times.index(unique_time)
         max_iters        = len(unique_times)
         post_text        = 'Finding longest whiskers.'
-        next_unique_time = unique_times[idx + 1]
         start            = idxs[idx]
         try:
             stop         = idxs[idx + 1] - 1

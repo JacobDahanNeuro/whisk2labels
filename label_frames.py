@@ -83,15 +83,15 @@ def find_whisker(h5):
     unique_times      = list(np.unique((np.array(times))))
     whiskers_to_trace = []
 
-    for unique_time in unique_times:
-        iteration       = unique_times.index(unique_time)
-        max_iters       = len(unique_times)
-        post_text       = 'Finding longest whiskers.'
-        indices         = [idx for idx, time in enumerate(times) if time == unique_time]
-        start, stop     = (indices[0], indices[-1])
-        whiskers        = []
-        [whiskers.append([time, x, y]) for x, y, time in zip(x_coords[start:stop+1], y_coords[start:stop+1], times[start:stop+1])]
-        longest_whisker = find_longest(whiskers)
+    for idx, unique_time in enumerate(unique_times):
+        iteration        = unique_times.index(unique_time)
+        max_iters        = len(unique_times)
+        post_text        = 'Finding longest whiskers.'
+        next_unique_time = unique_times[idx + 1]
+        start            = times.index(unique_time)
+        stop             = times.index(next_unique_time) - 1
+        whiskers         = [[time1, x, y] for x, y, time1 in zip(x_coords[start:stop+1], y_coords[start:stop+1], times[start:stop+1])]
+        longest_whisker  = find_longest(whiskers)
         whiskers_to_trace.append(longest_whisker)
         print_progress_bar(iteration, max_iters, post_text)
     
@@ -116,12 +116,8 @@ def convert_to_joints(h5, n_joints):
     Saves joints to hdf5.
     """
     h5file             = open_file(h5, mode="r+")
-    x_coords           = [row['x_coords'][:] for row in h5file.root.longest.iterrows()]
-    x_coords           = [list(flatten(row)) for row in x_coords]
-    x_coords           = [filter(lambda a: a != 0.0, row) for row in x_coords]
-    y_coords           = [row['y_coords'][:] for row in h5file.root.longest.iterrows()]
-    y_coords           = [list(flatten(row)) for row in y_coords]
-    y_coords           = [filter(lambda a: a != 0.0, row) for row in y_coords]
+    x_coords           = [filter(lambda a: a != 0.0, list(flatten(row['x_coords'][:]))) for row in h5file.root.longest.iterrows()]
+    y_coords           = [filter(lambda a: a != 0.0, list(flatten(row['y_coords'][:]))) for row in h5file.root.longest.iterrows()]
     times              = [int(row['time']) for row in h5file.root.longest.iterrows()]
     segmented_whiskers = []
 
@@ -157,10 +153,8 @@ def joints_to_csv(h5, imagepath, scorer, n_joints):
     Saves to PWD.
     """
     h5file            = open_file(h5, mode="r+")
-    x_coords          = [row['x_coords'][:] for row in h5file.root.joints.iterrows()]
-    x_coords          = [list(flatten(row)) for row in x_coords]
-    y_coords          = [row['y_coords'][:] for row in h5file.root.joints.iterrows()]
-    y_coords          = [list(flatten(row)) for row in y_coords]
+    x_coords          = [list(flatten(row['x_coords'][:])) for row in h5file.root.joints.iterrows()]
+    y_coords          = [list(flatten(row['y_coords'][:])) for row in h5file.root.joints.iterrows()]
     frames            = [str(imagepath + "img%06.f.png" % int(row['time'])) for row in h5file.root.joints.iterrows()]
     labels_x          = ["joint%s_x" % str(joint + 1) for joint in xrange(n_joints)]
     labels_y          = ["joint%s_y" % str(joint + 1) for joint in xrange(n_joints)]

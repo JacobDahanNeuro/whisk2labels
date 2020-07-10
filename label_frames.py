@@ -82,6 +82,7 @@ def find_whisker(h5):
     times              = [int(row['time']) for row in h5file.root.summary.iterrows()]
     unique_times, idxs = np.unique((np.array(times)), return_index=True)
     unique_times, idxs = list(unique_times), list(idxs)
+    whiskers_to_trace  = []
 
     for idx, unique_time in enumerate(unique_times):
         iteration        = unique_times.index(unique_time)

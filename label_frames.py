@@ -108,8 +108,8 @@ def find_whisker(h5):
         max_iters           = len(whiskers_to_trace)
         post_text           = 'Appending longest whiskers to hdf5 file.'
         whisker['time']     = frame[0]
-        whisker['x_coords'] = np.array(list(fill_list(frame[1], 1000)])).reshape((1000,1))
-        whisker['y_coords'] = np.array(list(fill_list(frame[2], 1000)])).reshape((1000,1))
+        whisker['x_coords'] = np.array(list(fill_list(frame[1], 1000))).reshape((1000,1))
+        whisker['y_coords'] = np.array(list(fill_list(frame[2], 1000))).reshape((1000,1))
         whisker.append()
         print_progress_bar(iteration, max_iters, post_text)
             

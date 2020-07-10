@@ -90,7 +90,10 @@ def find_whisker(h5):
         post_text        = 'Finding longest whiskers.'
         next_unique_time = unique_times[idx + 1]
         start            = idxs[idx]
-        stop             = idxs[idx + 1] - 1
+        try:
+            stop         = idxs[idx + 1] - 1
+        except IndexError:
+            stop         = times.index(times[-1])
         whiskers         = [[time, x, y] for x, y, time in zip(x_coords[start:stop+1], y_coords[start:stop+1], times[start:stop+1])]
         longest_whisker  = find_longest(whiskers)
         whiskers_to_trace.append(longest_whisker)

@@ -2,6 +2,7 @@ import os
 import sys
 import pandas
 import numpy as np
+import table as tb
 from tables import *
 from math import hypot
 from builtins import int
@@ -11,19 +12,19 @@ from pandas.core.common import flatten
 from whisker2joints import convert_whisker_to_joint_labels
 
 
-class Whisker(IsDescription):
-    x_coords = Float128Col(shape=(1000, 1))
-    y_coords = Float128Col(shape=(1000, 1))
-    time     = Int32Col()
+class Whisker(tb.IsDescription):
+    x_coords = tb.Float128Col(shape=(1000, 1))
+    y_coords = tb.Float128Col(shape=(1000, 1))
+    time     = tb.Int32Col()
 
 
-class Joints(IsDescription):
+class Joints(tb.IsDescription):
     """
     Edit shape assignment as appropriate for n_joints.
     """
-    x_coords = Float128Col(shape=(8, 1))
-    y_coords = Float128Col(shape=(8, 1))
-    time     = Int32Col()
+    x_coords = tb.Float128Col(shape=(8, 1))
+    y_coords = tb.Float128Col(shape=(8, 1))
+    time     = tb.Int32Col()
 
 
 def print_progress_bar(iteration, max_iters, post_text, bar_size=40):
@@ -98,13 +99,13 @@ def find_whisker(h5):
         whiskers_to_trace.append(longest_whisker)
         print_progress_bar(iteration, max_iters, post_text)
     
-    print('\nFinished finding longest whiskers.')
+    print('\n       Finished finding longest whiskers.')
 
-    table   = h5file.create_table(h5file.root, 'longest', Whisker, "Whiskers to track")
-    whisker = table.row
+    table     = h5file.create_table(h5file.root, 'longest', Whisker, "Whiskers to track")
+    whisker   = table.row
+    iteration = 0
 
     for frame in whiskers_to_trace:
-        iteration           = frame.index(whiskers_to_trace)
         max_iters           = len(whiskers_to_trace)
         post_text           = 'Appending longest whiskers to hdf5 file.'
         whisker['time']     = frame[0]
@@ -112,7 +113,10 @@ def find_whisker(h5):
         whisker['y_coords'] = np.array(list(fill_list(frame[2], 1000))).reshape((1000,1))
         whisker.append()
         print_progress_bar(iteration, max_iters, post_text)
-            
+        iteration          += 1
+
+    print('\n       Finished appending longest whiskers.')
+
     table.flush()
     h5file.close()
 
@@ -139,21 +143,24 @@ def convert_to_joints(h5, n_joints):
         segmented_whiskers.append(whisker)
         print_progress_bar(iteration, max_iters, post_text)
     
-    print('\nFinished converting whiskers to joints.')
+    print('\n       Finished converting whiskers to joints.')
     
-    table   = h5file.create_table(h5file.root, 'joints', Joints, "Segmented whiskers")
-    whisker = table.row
+    table     = h5file.create_table(h5file.root, 'joints', Joints, "Segmented whiskers")
+    whisker   = table.row
+    iteration = 0
 
     for frame in segmented_whiskers:
-        iteration           = frame.index(segmented_whiskers)
         max_iters           = len(segmented_whiskers)
         post_text           = 'Appending whisker joints to hdf5 file.'
         whisker['time']     = frame[0]
-        whisker['x_coords'] = np.array([coord for coord in frame[1]]).reshape((n_joints,1))
-        whisker['y_coords'] = np.array([coord for coord in frame[2]]).reshape((n_joints,1))
+        whisker['x_coords'] = np.array(frame[1]).reshape((n_joints,1))
+        whisker['y_coords'] = np.array(frame[2]).reshape((n_joints,1))
         whisker.append()
         print_progress_bar(iteration, max_iters, post_text)
-        
+        iteration          += 1
+
+    print('\n       Finished appending whisker joints.')
+
     table.flush()
     h5file.close()
 

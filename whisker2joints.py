@@ -20,7 +20,7 @@ def convert_whisker_to_joint_labels(x_coords, y_coords, n_joints):
     alpha                 = np.linspace(0, 1, n_joints)
     x_out, y_out          = fx(alpha), fy(alpha)
     coords                = zip(x_out, y_out)
-    df                    = pandas.DataFrame(coords, columns=('y', 'x'))
+    df                    = pandas.DataFrame(coords, columns=('x', 'y'))
     
     #Uncomment to check joint labels
     #check_joint_labels(x_coords, y_coords, x_out, y_out)

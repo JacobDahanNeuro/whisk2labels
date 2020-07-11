@@ -25,7 +25,7 @@ deeplabcut.plot_trajectories(config_path, ['path/to/video1.mkv','path/to/video2.
 deeplabcut.create_labeled_video(config_path, ['path/to/video1.mkv','path/to/video2.mkv'...])
 
 # Refinement
-deeplabcut.extract_outlier_frames('config_path', ['path/to/video1.mkv','path/to/video2.mkv'...])
+deeplabcut.extract_outlier_frames(config_path, ['path/to/video1.mkv','path/to/video2.mkv'...])
 deeplabcut.reﬁne_labels(conﬁg_path)
 deeplabcut.merge_datasets(conﬁg_path)
 ```

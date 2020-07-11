@@ -9,7 +9,7 @@ Prior to usage:
 cd 'full/path/to/whisk/directory/'
 
 h5            = 'full/path/to/h5.hdf5'
-imagepath     = 'labeled-images/video_name/'
+imagepath     = 'labeled-data/video_name/'
 scorer        = 'UNI'
 n_joints      = 8
 csvpath       = 'full/path/to/csv.csv'

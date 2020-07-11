@@ -201,18 +201,19 @@ def joints_to_csv(h5, imagepath, scorer, n_joints):
     h5file.close()
 
 
-def kmeans(csvpath, img2labelpath, scorer):
+def kmeans(csvpath, imagepath, img2labelpath, scorer):
     """
     Trims duplicate csv to contain only data for kmeans clustered frames designated for labeling.
     Saves csv to img2labelpath.
     csvpath:       Full path to csv labels file.
+    imagepath:     Relative path to labeling directory (e.g. labeled-data/video_name/)
     img2labelpath: Full path to directory of images to be labeled (e.g., .../labeled-data/video-name).
     scorer:        Name of scorer designated for DLC labeling.
     """
     df             = pandas.read_csv(csvpath, header=None)
     kmeans         = [row[0] for index, row in df.iterrows() if os.path.split(row[0])[1] in os.listdir(img2labelpath)]
     rows           = [row[0] for index, row in df.iterrows()]
-    missing        = [frame for frame in os.listdir(img2labelpath) if os.path.join(os.path.split(os.path.split(img2labelpath)[0])[1], os.path.split(img2labelpath)[1], frame) not in rows]
+    missing        = [frame for frame in os.listdir(img2labelpath) if os.path.join(imagepath, frame) not in rows]
     remove         = [os.remove(os.path.join(img2labelpath, no_labels)) for no_labels in missing]
     df_save        = df[df[0].isin(kmeans)]
     df_save.loc[0] = df.loc[0]

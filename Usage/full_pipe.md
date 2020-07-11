@@ -1,4 +1,4 @@
-# Full sample pipeline for single-mouse network (extrapolate for multiple mice)
+# Full sample pipeline for single-mouse network 
 
 ## Bash
 ```bash
@@ -117,12 +117,12 @@ deeplabcut.check_labels(conﬁg_path)
 deeplabcut.create_training_dataset(config_path)
 deeplabcut.train_network(conﬁg_path, shuffle=1, displayiters=1000, saveiters=10000)
 deeplabcut.evaluate_network(conﬁg_path, plotting=True)
-deeplabcut.analyze_videos(config_path, ['path/to/my_current_project/whiski/my_current_mouse/my_current_mouse_video.mkv'])
-deeplabcut.plot_trajectories(config_path, ['path/to/my_current_project/whiski/my_current_mouse/my_current_mouse_video.mkv'])
-deeplabcut.create_labeled_video(config_path, ['path/to/my_current_project/whiski/my_current_mouse/my_current_mouse_video.mkv'])
+deeplabcut.analyze_videos(config_path, ['path/to/my_current_project/my-current-project/videos/my_current_mouse/my_current_mouse_video.mkv'])
+deeplabcut.plot_trajectories(config_path, ['path/to/my_current_project/my-current-project/videos/my_current_mouse/my_current_mouse_video.mkv'])
+deeplabcut.create_labeled_video(config_path, ['path/to/my_current_project/my-current-project/videos/my_current_mouse/my_current_mouse_video.mkv'])
 
 # refine network
-deeplabcut.extract_outlier_frames(config_path, ['path/to/my_current_project/whiski/my_current_mouse/my_current_mouse_video.mkv'])
+deeplabcut.extract_outlier_frames(config_path, ['path/to/my_current_project/my-current-project/videos/my_current_mouse/my_current_mouse_video.mkv'])
 deeplabcut.reﬁne_labels(conﬁg_path)
 deeplabcut.merge_datasets(conﬁg_path)
 

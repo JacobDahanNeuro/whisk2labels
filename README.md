@@ -37,11 +37,12 @@ Trims duplicate csv to contain only data for kmeans clustered frames designated 
 Usage:
 ```python
 from label_frames import *
-kmeans(csvpath, img2labelpath, scorer)
+kmeans(csvpath, imagepath, img2labelpath, scorer)
 ```
 
 Inputs:
 - csvpath:       Full path to csv labels file.
+- imagepath:     Relative path to labeling directory (e.g. labeled-data/video_name/)
 - img2labelpath: Full path to directory of images to be labeled (e.g., .../labeled-data/video-name).
 - scorer:        Name of scorer designated for DLC labeling.
 
@@ -82,7 +83,7 @@ from label_frames import *
 find_and_segment_whisker(h5, imagepath, scorer, n_joints)
 
 # Compare labeled frames against kmeans clustered frames for labeling from DLC; save only matches
-kmeans(csvpath, img2labelpath, scorer)
+kmeans(csvpath, imagepath, img2labelpath, scorer)
 
 from remove_bad_frames import *
 

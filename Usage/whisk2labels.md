@@ -20,7 +20,7 @@ from label_frames import *
 find_and_segment_whisker(h5, imagepath, scorer, n_joints)
 
 # Compare labeled frames against kmeans clustered frames for labeling from DLC; save only matches
-kmeans(csvpath, img2labelpath, scorer)
+kmeans(csvpath, imagepath, img2labelpath, scorer)
 
 from remove_bad_frames import *
 

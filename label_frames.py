@@ -2,7 +2,7 @@ import os
 import sys
 import pandas
 import numpy as np
-import table as tb
+import tables as tb
 from tables import *
 from math import hypot
 from builtins import int

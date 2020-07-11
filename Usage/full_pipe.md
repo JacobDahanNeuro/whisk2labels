@@ -4,16 +4,21 @@
 ```bash
 # create dir structure
 cd ~
+
 mkdir my_current_project
 cd my_current_project
+
 mkdir whiski
 cd whiski
+
 mkdir my_current_mouse
 cd my_current_mouse
+
 # move videos into proper paths
 mv /path/to/my_current_mouse_video.mkv path/to/my_current_project/whiski/my_current_mouse/my_current_mouse_video.mkv
 # begin WhiskiWrap
 conda activate whiski_wrap
+
 ipython
 ```
 
@@ -40,8 +45,10 @@ exit()
 ```bash
 cd ~
 cd my_current_project
+
 # begin DLC
 conda activate DLC
+
 ipython
 ```
 
@@ -62,6 +69,7 @@ exit()
 ```bash
 # begin whisk2labels
 conda activate whiski_wrap
+
 ipython
 ```
 
@@ -91,6 +99,7 @@ exit()
 ```bash
 # begin DLC
 conda activate DLC
+
 ipython
 ```
 

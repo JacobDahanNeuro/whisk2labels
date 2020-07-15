@@ -2,6 +2,14 @@
 
 ## Bash
 ```bash
+# Add to user path
+cd ~
+mkdir src
+cd src
+git clone https://github.com/JacobDahan/whisk2labels.git
+# Note that USERNAME must be changed to individual username
+export PYTHONPATH=$PYTHONPATH:/home/USERNAME/src/whisk2labels/
+
 # create dir structure
 cd ~
 

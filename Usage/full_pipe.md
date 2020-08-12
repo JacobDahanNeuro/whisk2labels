@@ -64,7 +64,7 @@ ipython
 ```python
 import deeplabcut
 
-project_name = 'my-current-project'
+project_name = 'my-current-DLC-project'
 scorer       = 'my-UNI'
 config_path  = deeplabcut.create_new_project(project_name, scorer, ['path/to/my_current_project/whiski/my_current_mouse/my_current_mouse_video.mkv'], working_directory='path/to/my_current_project', copy_videos=True, videotype='.mkv')
 

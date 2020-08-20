@@ -115,6 +115,15 @@ ipython
 ```python
 import deeplabcut
 
+"""
+NB: Updated config.yaml label names before the following steps. 
+Correct labels (for n joints):
+-joint1
+-joint2
+...
+-jointn
+"""
+
 config_path = 'path/to/my_current_project/my-current-DLC-project/config.yaml'
 
 # check whiski + whisk2labels labels

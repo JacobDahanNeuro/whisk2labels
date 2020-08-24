@@ -46,6 +46,8 @@ input_vid = WhiskiWrap.FFmpegReader('path/to/my_current_project/whiski/my_curren
 tiff_dir  = 'path/to/my_current_project/whiski/my_current_mouse'
 h5_fi     = 'path/to/my_current_project/whiski/my_current_mouse/my_current_mouse_video.hdf5'
 n         = 10
+side      = 'left'
+#side     = 'right
 
 WhiskiWrap.interleaved_reading_and_tracing(input_vid,tiff_dir, h5_filename=h5_fi, n_trace_processes=n)
 

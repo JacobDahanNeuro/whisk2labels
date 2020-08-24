@@ -78,12 +78,8 @@ scorer       = 'my-UNI'
 config_path  = deeplabcut.create_new_project(project_name, scorer, ['path/to/my_current_project/whiski/my_current_mouse/my_current_mouse_video.mkv'], working_directory='path/to/my_current_project', copy_videos=True, videotype='.mkv')
 
 """
-NB: Update config.yaml label names before the following step. 
-Correct labels (for n joints):
--joint1
--joint2
-...
--jointn
+NB: Update config.yaml numframes2pick before following step. 
+Recommended numframes2pick: ~100 / n_mice 
 """
 
 deeplabcut.extract_frames(conﬁg_path)
@@ -136,6 +132,15 @@ ipython
 ## Python
 ```python
 import deeplabcut
+
+"""
+NB: Update config.yaml label names before the following steps. 
+Correct labels (for n joints):
+-joint1
+-joint2
+...
+-jointn
+"""
 
 config_path = 'path/to/my_current_project/my-current-DLC-project/config.yaml'
 

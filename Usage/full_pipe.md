@@ -58,6 +58,8 @@ exit()
 
 ## Bash
 ```bash
+conda deactivate
+
 cd ~
 cd my_current_project
 
@@ -82,6 +84,8 @@ exit()
 
 ## Bash
 ```bash
+conda deactivate
+
 # begin whisk2labels
 conda activate whiski_wrap
 
@@ -112,6 +116,8 @@ exit()
 
 ## Bash
 ```bash
+conda deactivate
+
 # begin DLC
 conda activate DLC
 

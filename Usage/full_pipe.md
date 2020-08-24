@@ -24,6 +24,7 @@ cd my_current_mouse
 
 # move videos into proper paths
 mv /path/to/my_current_mouse_video.mkv path/to/my_current_project/whiski/my_current_mouse/my_current_mouse_video.mkv
+
 # begin WhiskiWrap
 conda activate whiski_wrap
 
@@ -35,6 +36,11 @@ ipython
 import WhiskiWrap
 import ffmpeg
 import os
+
+"""
+NB: It may be preferable to rotate all videos such that the mouse is facing 'upward.'
+To rotate (in bash): ffmpeg -i in.mkv -vf "transpose=2,transpose=2" -c:a copy -vcodec libx264 out.mkv
+"""
 
 input_vid = WhiskiWrap.FFmpegReader('path/to/my_current_project/whiski/my_current_mouse/my_current_mouse_video.mkv')
 tiff_dir  = 'path/to/my_current_project/whiski/my_current_mouse'

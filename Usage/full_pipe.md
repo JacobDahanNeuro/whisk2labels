@@ -52,7 +52,7 @@ side      = 'left'
 WhiskiWrap.interleaved_reading_and_tracing(input_vid,tiff_dir, h5_filename=h5_fi, n_trace_processes=n)
 
 results_summary = WhiskiWrap.read_whiskers_hdf5_summary(h5_fi)
-measurements    = [WhiskiWrap.measure_chunk(os.path.join(os.getcwd(), '{}'.format(fi)), face=side) for fi in os.listdir('.') if "whiskers" in fi]
+measurements    = [WhiskiWrap.measure_chunk(os.path.join(tiff_dir, '{}'.format(fi)), face=side) for fi in os.listdir(tiff_dir) if "whiskers" in fi]
 exit()
 ```
 

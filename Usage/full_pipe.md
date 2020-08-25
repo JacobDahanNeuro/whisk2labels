@@ -105,7 +105,7 @@ h5            = 'path/to/my_current_project/whiski/my_current_mouse/my_current_m
 imagepath     = 'labeled-data/my_current_mouse_video/'
 scorer        = 'my-UNI'
 n_joints      = 8
-csvpath       = 'path/to/my_current_project/my-current-DLC-project/my_current_mouse/joints_for_dlc.csv'
+csvpath       = 'path/to/my_current_project/whiski/my_current_mouse/joints_for_dlc.csv'
 img2labelpath = 'path/to/my_current_project/my-current-DLC-project/labeled-data/my_current_mouse/'
 
 # Identify C2 and segment into n_joints

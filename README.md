@@ -52,11 +52,17 @@ Deletes images for labeling where labels are innacurate (as marked by user).
 
 Usage:
 ```python
+# Manual version
 from remove_bad_frames import *
 delete_labels(csvpath, img2labelpath, labeled_img)
+
+# Identify and remove poor whiski results w/ GUI
+from remove_bad_frames_gui import *
+search_new_dir=True
+find_bad_frames(search_new_dir)
 ```
 
-Inputs:
+Inputs (manual version):
 - csvpath:        Full path to DLC labels csv.
 - img2labelpath: Full path to directory of images to be labeled.
 - labeled_img:    Name *only* of labeled image (no path).
@@ -85,11 +91,6 @@ find_and_segment_whisker(h5, imagepath, scorer, n_joints)
 
 # Compare labeled frames against kmeans clustered frames for labeling from DLC; save only matches
 kmeans(csvpath, imagepath, img2labelpath, scorer)
-
-from remove_bad_frames import *
-
-# Manually identify poor whiski results
-labeled_imgs = ['img000001_bodyparts.png', 'img000048_bodyparts.png', 'img001820_bodyparts.png', ...]
 
 # Remove bad frames from DLC training set to preserve network integrity
 # Identify and remove poor whiski results w/ GUI

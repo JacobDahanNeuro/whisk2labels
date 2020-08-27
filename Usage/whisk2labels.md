@@ -3,6 +3,8 @@
 Prior to usage:
     - Run WhiskiWrap: Trace video.
     - Run DLC:        Kmeans extract frames for labeling.
+Following usage:
+    - Run DLC: convert csv to h5
 """
 
 # Change working directory
@@ -38,10 +40,5 @@ labeled_imgs = ['img000001_bodyparts.png', 'img000048_bodyparts.png', 'img001820
 # Remove bad frames from DLC training set to preserve network integrity
 for labeled_img in labeled_imgs:
   delete_labels(csvpath, img2labelpath, labeled_img)
-"""
-
-"""
-Following usage:
-    - Run DLC: convert csv to h5
 """
 ```  

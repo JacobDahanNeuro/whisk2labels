@@ -115,13 +115,6 @@ find_and_segment_whisker(h5, imagepath, scorer, n_joints)
 
 # Compare labeled frames against kmeans clustered frames for labeling from DLC; save only matches
 kmeans(csvpath, imagepath, img2labelpath, scorer)
-
-# Identify and remove bad whiski frames
-import remove_bad_frames_gui as rbf_gui
-
-rbf_gui()
-
-exit()
 ```
 
 ## Bash
@@ -146,6 +139,13 @@ Correct labels (for n joints):
 ...
 -jointn
 """
+
+# Identify and remove bad whiski frames
+from remove_bad_frames_gui import *
+
+search_new_dir=True
+
+find_bad_frames(search_new_dir)
 
 config_path = 'path/to/my_current_project/my-current-DLC-project/config.yaml'
 

@@ -22,6 +22,14 @@ find_and_segment_whisker(h5, imagepath, scorer, n_joints)
 # Compare labeled frames against kmeans clustered frames for labeling from DLC; save only matches
 kmeans(csvpath, imagepath, img2labelpath, scorer)
 
+# Identify and remove poor whiski results w/ GUI
+import remove_bad_frames_gui
+
+remove_bad_frames_gui()
+
+"""
+To manually identify and remove poor results (no GUI):
+
 from remove_bad_frames import *
 
 # Manually identify poor whiski results
@@ -30,7 +38,8 @@ labeled_imgs = ['img000001_bodyparts.png', 'img000048_bodyparts.png', 'img001820
 # Remove bad frames from DLC training set to preserve network integrity
 for labeled_img in labeled_imgs:
   delete_labels(csvpath, img2labelpath, labeled_img)
-  
+"""
+
 """
 Following usage:
     - Run DLC: convert csv to h5

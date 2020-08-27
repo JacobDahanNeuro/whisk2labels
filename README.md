@@ -92,6 +92,9 @@ from remove_bad_frames import *
 labeled_imgs = ['img000001_bodyparts.png', 'img000048_bodyparts.png', 'img001820_bodyparts.png', ...]
 
 # Remove bad frames from DLC training set to preserve network integrity
-for labeled_img in labeled_imgs:
-  delete_labels(csvpath, img2labelpath, labeled_img)
+# Identify and remove poor whiski results w/ GUI
+from remove_bad_frames_gui import *
+
+search_new_dir=True
+find_bad_frames(search_new_dir)
 ```

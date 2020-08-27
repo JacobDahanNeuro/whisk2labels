@@ -28,6 +28,7 @@ kmeans(csvpath, imagepath, img2labelpath, scorer)
 from remove_bad_frames_gui import *
 
 search_new_dir=True
+
 find_bad_frames(search_new_dir)
 
 """

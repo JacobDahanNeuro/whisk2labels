@@ -25,9 +25,10 @@ find_and_segment_whisker(h5, imagepath, scorer, n_joints)
 kmeans(csvpath, imagepath, img2labelpath, scorer)
 
 # Identify and remove poor whiski results w/ GUI
-import remove_bad_frames_gui
+from remove_bad_frames_gui import *
 
-remove_bad_frames_gui()
+search_new_dir=True
+find_bad_frames(search_new_dir)
 
 """
 To manually identify and remove poor results (no GUI):

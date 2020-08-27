@@ -71,7 +71,12 @@ def find_bad_frames(search_new_dir):
         window.geometry("800x700")
         window.configure(background='grey')
 
-        directory            = filedialog.askdirectory()
+        directory = filedialog.askdirectory()
+
+        if directory == '':
+            search_new_dir = False
+            continue
+
         img2labelpath        = directory.split('_labeled')[0]
         csv                  = [f for f in os.listdir(img2labelpath) if os.path.isfile(os.path.join(img2labelpath, f)) and '.csv' in f][0]
         csv_path             = os.path.join(img2labelpath, csv)

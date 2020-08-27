@@ -96,5 +96,6 @@ labeled_imgs = ['img000001_bodyparts.png', 'img000048_bodyparts.png', 'img001820
 from remove_bad_frames_gui import *
 
 search_new_dir=True
+
 find_bad_frames(search_new_dir)
 ```

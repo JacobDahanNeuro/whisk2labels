@@ -56,7 +56,7 @@ Usage:
 from remove_bad_frames import *
 delete_labels(csvpath, img2labelpath, labeled_img)
 
-# Identify and remove poor whiski results w/ GUI
+# Identify and remove poor whiski results w/ GUI (must use DLC conda environment)
 from remove_bad_frames_gui import *
 search_new_dir=True
 find_bad_frames(search_new_dir)
@@ -93,7 +93,7 @@ find_and_segment_whisker(h5, imagepath, scorer, n_joints)
 kmeans(csvpath, imagepath, img2labelpath, scorer)
 
 # Remove bad frames from DLC training set to preserve network integrity
-# Identify and remove poor whiski results w/ GUI
+# Identify and remove poor whiski results w/ GUI (must use DLC conda environment)
 from remove_bad_frames_gui import *
 
 search_new_dir=True

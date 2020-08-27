@@ -62,7 +62,7 @@ def preview_and_select(file, window):
     return button_press
 
 
-def find_bad_frames(search_new_dir):
+def find_bad_frames(search_new_dir=True):
 
     while search_new_dir:
 
@@ -87,8 +87,3 @@ def find_bad_frames(search_new_dir):
         remove_frames(bool_is_good_fi_list, full_path_pngs, img2labelpath, csv_path)
 
         window.destroy()
-
-
-if __name__ == "__main__":
-    search_new_dir=True
-    find_bad_frames(search_new_dir)

@@ -24,7 +24,8 @@ find_and_segment_whisker(h5, imagepath, scorer, n_joints)
 # Compare labeled frames against kmeans clustered frames for labeling from DLC; save only matches
 kmeans(csvpath, imagepath, img2labelpath, scorer)
 
-# Identify and remove poor whiski results w/ GUI
+# Remove bad frames from DLC training set to preserve network integrity
+# Identify and remove poor whiski results w/ GUI (must use DLC conda environment)
 from remove_bad_frames_gui import *
 
 search_new_dir=True

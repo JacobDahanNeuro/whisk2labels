@@ -146,7 +146,7 @@ config_path = 'path/to/my_current_project/my-current-DLC-project/config.yaml'
 deeplabcut.convertcsv2h5(config_path, scorer='my-UNI')
 deeplabcut.check_labels(conﬁg_path)
 
-# Identify and remove bad whiski frames
+# identify and remove bad whiski frames
 search_new_dir=True
 find_bad_frames(search_new_dir)
 

@@ -130,7 +130,7 @@ ipython
 ## Python
 ```python
 import deeplabcut
-
+from remove_bad_frames_gui import *
 """
 NB: Update config.yaml label names before the following steps. 
 Correct labels (for n joints):
@@ -140,18 +140,15 @@ Correct labels (for n joints):
 -jointn
 """
 
-# Identify and remove bad whiski frames
-from remove_bad_frames_gui import *
-
-search_new_dir=True
-
-find_bad_frames(search_new_dir)
-
 config_path = 'path/to/my_current_project/my-current-DLC-project/config.yaml'
 
 # check whiski + whisk2labels labels
 deeplabcut.convertcsv2h5(config_path, scorer='my-UNI')
 deeplabcut.check_labels(conﬁg_path)
+
+# Identify and remove bad whiski frames
+search_new_dir=True
+find_bad_frames(search_new_dir)
 
 # create + train + evaluate network
 deeplabcut.create_training_dataset(config_path)

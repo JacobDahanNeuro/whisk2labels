@@ -5,6 +5,7 @@ For full pipeline, please view [full_pipe.md](https://github.com/JacobDahan/whis
 ## NB
 1. Must use python2 conda environment (e.g., whiski_wrap).
 2. PYTHONPATH must be exported in every new kernel.
+3. remove_bad_frames is now deprecated in favor of remove_bad_frames_gui
 
 ## Add to usr path
 ```bash

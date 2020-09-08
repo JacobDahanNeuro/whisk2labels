@@ -150,6 +150,10 @@ deeplabcut.check_labels(conﬁg_path)
 search_new_dir=True
 find_bad_frames(search_new_dir)
 
+# check whiski + whisk2labels labels
+deeplabcut.convertcsv2h5(config_path, scorer='my-UNI')
+deeplabcut.check_labels(conﬁg_path)
+
 # create + train + evaluate network
 deeplabcut.create_training_dataset(config_path)
 deeplabcut.train_network(conﬁg_path, shuffle=1, displayiters=1000, saveiters=10000)

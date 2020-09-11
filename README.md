@@ -4,7 +4,7 @@ Extract C2 whisker from whiski data; label stim arm; convert whisker and stim to
 For full pipeline, please view [full_pipe.md](https://github.com/JacobDahan/whisk2labels/blob/master/Usage/full_pipe.md).
 
 ## NB
-1. Must use python2 conda environment (e.g., whiski_wrap).
+1. Must use python2 conda environment (e.g., whiski_wrap environment) for all non-DLC functions *except* `find_and_segment_stim`, which requires python3 (e.g., DLC environment).
 2. PYTHONPATH must be exported in every new kernel.
 3. remove_bad_frames is now deprecated in favor of remove_bad_frames_gui
 

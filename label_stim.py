@@ -5,17 +5,10 @@ import pandas
 import numpy as np
 import tables as tb
 from tables import *
-import tkinter as tk
-from tkinter import * 
 from math import hypot
 from builtins import int
 from builtins import str
 from builtins import list
-import tkinter.ttk as ttk
-from tkinter import filedialog 
-from PIL import Image, ImageTk
-from remove_bad_frames import *
-import matplotlib.pyplot as plt
 from pandas.core.common import flatten
 from stim2joints import convert_stim_to_joint_labels
 

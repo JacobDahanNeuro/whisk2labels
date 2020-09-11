@@ -48,6 +48,22 @@ Inputs:
 - img2labelpath: Full path to directory of images to be labeled (e.g., .../labeled-data/video-name).
 - scorer:        Name of scorer designated for DLC labeling.
 
+## find_and_segment_stim
+User-guided tracking and segmentation of stim arm into n joints.
+Merges output csv with given DLC csv.
+
+Usage:
+```python
+from label_stim import *
+find_and_segment_stim(h5, img2labelpath, scorer, n_joints)
+```
+
+Inputs:
+- h5:            Full path to h5 file.
+- img2labelpath: Full path to directory of images to be labeled (e.g., .../labeled-data/video-name).
+- scorer:        Name of scorer designated for DLC labeling.
+- n_joints:      Number of joints for stim segmentation.
+
 ## delete_labels
 Deletes images for labeling where labels are innacurate (as marked by user).
 
@@ -69,35 +85,4 @@ Inputs (manual version):
 - labeled_img:    Name *only* of labeled image (no path).
 
 ## Full usage
-```python
-"""
-Prior to usage:
-    - Run WhiskiWrap: Trace video.
-    - Run DLC:        Kmeans extract frames for labeling.
-"""
-
-# Change working directory
-cd 'full/path/to/whisk/directory/'
-
-h5            = 'full/path/to/h5.hdf5'
-imagepath     = 'labeled-images/video_name/'
-scorer        = 'UNI'
-n_joints      = 8
-csvpath       = 'full/path/to/csv.csv'
-img2labelpath = 'full/path/to/labeled-data/video-name/'
-
-# Identify C2 and segment into n_joints
-from label_frames import *
-find_and_segment_whisker(h5, imagepath, scorer, n_joints)
-
-# Compare labeled frames against kmeans clustered frames for labeling from DLC; save only matches
-kmeans(csvpath, imagepath, img2labelpath, scorer)
-
-# Remove bad frames from DLC training set to preserve network integrity
-# Identify and remove poor whiski results w/ GUI (must use DLC conda environment)
-from remove_bad_frames_gui import *
-
-search_new_dir=True
-
-find_bad_frames(search_new_dir)
-```
+See Usage/full_pipe.md

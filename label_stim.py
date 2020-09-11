@@ -195,7 +195,7 @@ def joints_to_csv(h5, img2labelpath, scorer, n_joints):
     df                = df.drop(columns=0).reindex()
     df                = pandas.concat([csvfile, df], axis=1)
     df[df.eq(0)]      = np.nan
-    csv               = df.to_csv('joints_for_dlc.csv', index=False, header=False)
+    csv               = df.to_csv(csvpath, index=False, header=False)
     h5file.close()
 
 

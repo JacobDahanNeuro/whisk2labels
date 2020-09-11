@@ -85,4 +85,4 @@ Inputs (manual version):
 - labeled_img:    Name *only* of labeled image (no path).
 
 ## Full usage
-See Usage/full_pipe.md
+See [Usage/full_pipe.md](https://github.com/JacobDahan/whisk2labels/blob/master/Usage/full_pipe.md)

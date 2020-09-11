@@ -117,9 +117,9 @@ def convert_stim_to_joints(h5, n_joints):
     x_coords       = [list(flatten(row['x_coords'][:])) for row in h5file.root.stim_corners.iterrows()]
     y_coords       = [list(flatten(row['y_coords'][:])) for row in h5file.root.stim_corners.iterrows()]
     segmented_stim = []
+    iteration      = 0
 
     for x, y in zip(x_coords, y_coords):
-        iteration  = x_coords.index(x)
         max_iters  = len(x_coords)
         post_text  = 'Converting stim to joints.'
         all_coords = [x, y]
@@ -137,7 +137,10 @@ def convert_stim_to_joints(h5, n_joints):
         x_labels   = df['x'].tolist()
         y_labels   = df['y'].tolist()
         stim       = [x_labels, y_labels]
+        iteration += 1
         segmented_stim.append(stim)
+        print_progress_bar(iteration, max_iters, post_text)
+
 
     print('\n         Finished converting stim to joints.')
     
@@ -151,9 +154,10 @@ def convert_stim_to_joints(h5, n_joints):
         post_text          = 'Appending stim joints to hdf5 file.'
         row['x_coords']    = np.array(x_coords).reshape((n_joints,1))
         row['y_coords']    = np.array(y_coords).reshape((n_joints,1))
+        iteration         += 1
         row.append()
         print_progress_bar(iteration, max_iters, post_text)
-        iteration         += 1
+
 
     print('\n         Finished appending stim joints.')
     table.flush()

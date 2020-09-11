@@ -115,13 +115,6 @@ find_and_segment_whisker(h5, imagepath, scorer, n_joints)
 
 # Compare labeled frames against kmeans clustered frames for labeling from DLC; save only matches
 kmeans(csvpath, imagepath, img2labelpath, scorer)
-
-# Label stim arm and segment into n_joints
-from label_stim import *
-
-n_joints = 20
-
-find_and_segment_stim(h5, img2labelpath, scorer, n_joints)
 ```
 
 ## Bash
@@ -137,6 +130,7 @@ ipython
 ## Python
 ```python
 import deeplabcut
+from label_stim import *
 from remove_bad_frames_gui import *
 """
 NB: Update config.yaml label names before the following steps. 
@@ -146,8 +140,14 @@ Correct labels (for n joints):
 ...
 -jointn
 """
+h5            = 'path/to/my_current_project/whiski/my_current_mouse/my_current_mouse_video.hdf5'
+img2labelpath = 'path/to/my_current_project/my-current-DLC-project/labeled-data/my_current_mouse/'
+scorer        = 'my-UNI'
+n_joints      = 20
+config_path   = 'path/to/my_current_project/my-current-DLC-project/config.yaml'
 
-config_path = 'path/to/my_current_project/my-current-DLC-project/config.yaml'
+# Label stim arm and segment into n_joints
+find_and_segment_stim(h5, img2labelpath, scorer, n_joints)
 
 # check whiski + whisk2labels labels
 deeplabcut.convertcsv2h5(config_path, scorer='my-UNI')

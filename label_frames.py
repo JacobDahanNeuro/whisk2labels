@@ -194,7 +194,7 @@ def joints_to_csv(h5, imagepath, scorer, n_joints):
     xy_tags           = ['coords'] + xy_tags[:]
     df                = pandas.DataFrame(np.insert(df.values, 0, values=xy_tags, axis=0))
     df                = pandas.DataFrame(np.insert(df.values, 0, values=labels, axis=0))
-    headers           = ['scorer'] + ['jbd2144' for label in xrange(len(labels)-1)]
+    headers           = ['scorer'] + [scorer for label in xrange(len(labels)-1)]
     df.columns        = [labels]
     df                = pandas.DataFrame(np.insert(df.values, 0, values=headers, axis=0))
     csv               = df.to_csv('joints_for_dlc.csv', index=False, header=False)

@@ -21,8 +21,8 @@ class Joints(tb.IsDescription):
     """
     Edit shape assignment as appropriate for n_joints.
     """
-    x_coords = tb.Float128Col(shape=(20, 1))
-    y_coords = tb.Float128Col(shape=(20, 1))
+    x_coords = tb.Float128Col(shape=(10, 1))
+    y_coords = tb.Float128Col(shape=(10, 1))
 
 
 def fill_list(src_list, targ_len):
@@ -119,8 +119,8 @@ def convert_stim_to_joints(h5, n_joints):
         all_coords = [item for sublist in all_coords for item in sublist]
         
         if 0.0 in all_coords:
-            x_out  = [0.0 for _ in range(20)]
-            y_out  = [0.0 for _ in range(20)]
+            x_out  = [0.0 for _ in range(10)]
+            y_out  = [0.0 for _ in range(10)]
             coords = zip(x_out, y_out)
             df     = pandas.DataFrame(coords, columns=('x', 'y'))
         
@@ -199,7 +199,7 @@ def joints_to_csv(h5, img2labelpath, scorer, n_joints):
     h5file.close()
 
 
-def find_and_segment_stim(h5, img2labelpath, scorer, n_joints=20):
+def find_and_segment_stim(h5, img2labelpath, scorer, n_joints=10):
     """
     User-guided tracking of stimulus edge.    
     h5:            Full path to h5 file.

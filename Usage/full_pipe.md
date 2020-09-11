@@ -115,6 +115,13 @@ find_and_segment_whisker(h5, imagepath, scorer, n_joints)
 
 # Compare labeled frames against kmeans clustered frames for labeling from DLC; save only matches
 kmeans(csvpath, imagepath, img2labelpath, scorer)
+
+# Label stim arm and segment into n_joints
+from label_stim import *
+
+n_joints = 20
+
+find_and_segment_stim(h5, img2labelpath, scorer, n_joints)
 ```
 
 ## Bash

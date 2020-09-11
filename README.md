@@ -1,5 +1,6 @@
 # whisk2labels
 Extract C2 whisker from whiski data; label stim arm; convert whisker and stim to joints.
+
 For full pipeline, please view [full_pipe.md](https://github.com/JacobDahan/whisk2labels/blob/master/Usage/full_pipe.md).
 
 ## NB

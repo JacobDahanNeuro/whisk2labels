@@ -143,7 +143,7 @@ Correct labels (for n joints):
 h5            = 'path/to/my_current_project/whiski/my_current_mouse/my_current_mouse_video.hdf5'
 img2labelpath = 'path/to/my_current_project/my-current-DLC-project/labeled-data/my_current_mouse/'
 scorer        = 'my-UNI'
-n_joints      = 20
+n_joints      = 10
 config_path   = 'path/to/my_current_project/my-current-DLC-project/config.yaml'
 
 # Label stim arm and segment into n_joints

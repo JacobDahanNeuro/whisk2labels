@@ -139,6 +139,10 @@ Correct labels (for n joints):
 -joint2
 ...
 -jointn
+-stim_loc1
+-stim_loc2
+...
+-stim_locn
 """
 h5            = 'path/to/my_current_project/whiski/my_current_mouse/my_current_mouse_video.hdf5'
 img2labelpath = 'path/to/my_current_project/my-current-DLC-project/labeled-data/my_current_mouse/'

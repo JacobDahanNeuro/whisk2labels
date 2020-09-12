@@ -68,7 +68,7 @@ def display_and_label_stim(h5, f):
     
     for i in range(5):    # maybe 5 or more
         cv2.waitKey(1)
-
+    
     return refPt
 
 
@@ -77,7 +77,7 @@ def find_stim(h5, img2labelpath):
     User-guided tracking of stimulus corners for all kmeans selected images.
     """
     directory          = img2labelpath
-    pngs               = [f for f in os.listdir(directory) if os.path.isfile(os.path.join(directory, f)) and '.png' in f]
+    pngs               = [f for f in sorted(os.listdir(directory)) if os.path.isfile(os.path.join(directory, f)) and '.png' in f]
     full_path_pngs     = [os.path.join(directory, f) for f in pngs]
     coords             = [display_and_label_stim(h5, f) for f in full_path_pngs]
     h5file             = open_file(h5, mode="r+")
@@ -117,7 +117,7 @@ def convert_stim_to_joints(h5, n_joints):
         post_text  = 'Converting stim to joints.'
         all_coords = [x, y]
         all_coords = [item for sublist in all_coords for item in sublist]
-        
+
         if 0.0 in all_coords:
             x_out  = [0.0 for _ in range(10)]
             y_out  = [0.0 for _ in range(10)]
@@ -126,7 +126,7 @@ def convert_stim_to_joints(h5, n_joints):
         
         else:
             df     = convert_stim_to_joint_labels(x, y, n_joints)
-            
+
         x_labels   = df['x'].tolist()
         y_labels   = df['y'].tolist()
         stim       = [x_labels, y_labels]

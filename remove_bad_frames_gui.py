@@ -78,9 +78,9 @@ def find_bad_frames(search_new_dir=True):
             continue
 
         img2labelpath        = directory.split('_labeled')[0]
-        csv                  = [f for f in os.listdir(img2labelpath) if os.path.isfile(os.path.join(img2labelpath, f)) and '.csv' in f][0]
+        csv                  = [f for f in sorted(os.listdir(img2labelpath)) if os.path.isfile(os.path.join(img2labelpath, f)) and '.csv' in f][0]
         csv_path             = os.path.join(img2labelpath, csv)
-        pngs                 = [f for f in os.listdir(directory) if os.path.isfile(os.path.join(directory, f)) and '.png' in f]
+        pngs                 = [f for f in sorted(os.listdir(directory)) if os.path.isfile(os.path.join(directory, f)) and '.png' in f]
         full_path_pngs       = [os.path.join(directory, f) for f in pngs]
         bool_is_good_fi_list = [preview_and_select(f, window) for f in full_path_pngs]
 

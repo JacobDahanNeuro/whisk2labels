@@ -183,7 +183,7 @@ deeplabcut.analyze_videos(config_path, ['path/to/my_current_project/my-current-D
 deeplabcut.filterpredictions(config_path, ['path/to/my_current_project/my-current-DLC-project/videos/my_current_mouse/my_current_mouse_video.mkv'] (or 'path/to/video/folder/'), videotype='.mkv')
 deeplabcut.plot_trajectories(config_path, ['path/to/my_current_project/my-current-DLC-project/videos/my_current_mouse/my_current_mouse_video.mkv'])
 deeplabcut.plot_trajectories(config_path, ['path/to/my_current_project/my-current-DLC-project/videos/my_current_mouse/my_current_mouse_video.mkv'], filtered=True)
-deeplabcut.create_labeled_video(config_path, ['path/to/my_current_project/my-current-DLC-project/videos/my_current_mouse/my_current_mouse_video.mkv'], draw_skeleton=True/False, filtered=True/False)
+deeplabcut.create_labeled_video(config_path, ['path/to/my_current_project/my-current-DLC-project/videos/my_current_mouse/my_current_mouse_video.mkv'], draw_skeleton=True/False, filtered=True/False, save_frames=True)
 
 # refine network
 deeplabcut.extract_outlier_frames(config_path, ['path/to/my_current_project/my-current-DLC-project/videos/my_current_mouse/my_current_mouse_video.mkv'])

@@ -172,6 +172,7 @@ deeplabcut.evaluate_network(conﬁg_path, plotting=True)
 deeplabcut.analyze_videos(config_path, ['path/to/my_current_project/my-current-DLC-project/videos/my_current_mouse/my_current_mouse_video.mkv'] (or 'path/to/video/folder/'), shuffle=1, save_as_csv=True, videotype='.mkv')
 deeplabcut.filterpredictions(config_path, ['path/to/my_current_project/my-current-DLC-project/videos/my_current_mouse/my_current_mouse_video.mkv'] (or 'path/to/video/folder/'), videotype='.mkv')
 deeplabcut.plot_trajectories(config_path, ['path/to/my_current_project/my-current-DLC-project/videos/my_current_mouse/my_current_mouse_video.mkv'])
+deeplabcut.plot_trajectories(config_path, ['path/to/my_current_project/my-current-DLC-project/videos/my_current_mouse/my_current_mouse_video.mkv'], filtered=True)
 deeplabcut.create_labeled_video(config_path, ['path/to/my_current_project/my-current-DLC-project/videos/my_current_mouse/my_current_mouse_video.mkv'])
 
 # refine network

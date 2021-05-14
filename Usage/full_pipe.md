@@ -143,6 +143,16 @@ Correct labels (for n joints):
 -stim_loc2
 ...
 -stim_locn
+
+NB2: For skeleton, update config.yaml label names before the following steps. 
+Correct label configuration:
+# Plotting configuration
+skeleton: [['joint1','joint2'],['joint2','joint3'],['joint3','joint4'],['joint4','joint5'],['joint5','joint6'],['joint6','joint7'],['joint7','joint8'],['stim_loc1','stim_loc2'],['stim_loc2','stim_loc3'],['stim_loc3','stim_loc4'],['stim_loc4','stim_loc5'],['stim_loc5','stim_loc6'],['stim_loc6','stim_loc7'],['stim_loc7','stim_loc8'],['stim_loc8','stim_loc9'],['stim_loc9','stim_loc10']]
+skeleton_color: white
+pcutoff: 0.6
+dotsize: 6
+alphavalue: 0.6
+colormap: plasma
 """
 h5            = 'path/to/my_current_project/whiski/my_current_mouse/my_current_mouse_video.hdf5'
 img2labelpath = 'path/to/my_current_project/my-current-DLC-project/labeled-data/my_current_mouse/'
@@ -173,7 +183,7 @@ deeplabcut.analyze_videos(config_path, ['path/to/my_current_project/my-current-D
 deeplabcut.filterpredictions(config_path, ['path/to/my_current_project/my-current-DLC-project/videos/my_current_mouse/my_current_mouse_video.mkv'] (or 'path/to/video/folder/'), videotype='.mkv')
 deeplabcut.plot_trajectories(config_path, ['path/to/my_current_project/my-current-DLC-project/videos/my_current_mouse/my_current_mouse_video.mkv'])
 deeplabcut.plot_trajectories(config_path, ['path/to/my_current_project/my-current-DLC-project/videos/my_current_mouse/my_current_mouse_video.mkv'], filtered=True)
-deeplabcut.create_labeled_video(config_path, ['path/to/my_current_project/my-current-DLC-project/videos/my_current_mouse/my_current_mouse_video.mkv'])
+deeplabcut.create_labeled_video(config_path, ['path/to/my_current_project/my-current-DLC-project/videos/my_current_mouse/my_current_mouse_video.mkv'], draw_skeleton=True/False, filtered=True/False)
 
 # refine network
 deeplabcut.extract_outlier_frames(config_path, ['path/to/my_current_project/my-current-DLC-project/videos/my_current_mouse/my_current_mouse_video.mkv'])

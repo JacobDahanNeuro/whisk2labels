@@ -39,7 +39,7 @@ def plm(df, outliers):
     joints = [joint1, joint2, joint3, joint4, joint5, joint6, joint7, joint8]
     cmp    = iter(plt.cm.plasma(np.linspace(0, 1, len(joints))))
 
-    im     = plt.imread('/mnt/expanse/homes/jacob/Co1939/whisker+stim-jacob-2020-09-11/labeled-data/JP25_20181019_reoriented/img002220.png.png')
+    im     = plt.imread('/mnt/expanse/homes/jacob/Co1939/whisker+stim-jacob-2020-09-11/labeled-data/JP25_20181019_reoriented/img002220.png')
     implot = plt.imshow(im)
 
     for joint in joints:

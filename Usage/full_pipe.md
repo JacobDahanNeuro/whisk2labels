@@ -180,10 +180,17 @@ deeplabcut.create_training_dataset(config_path)
 deeplabcut.train_network(conﬁg_path, shuffle=1, displayiters=1000, saveiters=10000)
 deeplabcut.evaluate_network(conﬁg_path, plotting=True)
 deeplabcut.analyze_videos(config_path, ['path/to/my_current_project/my-current-DLC-project/videos/my_current_mouse/my_current_mouse_video.mkv'] (or 'path/to/video/folder/'), shuffle=1, save_as_csv=True, videotype='.mkv')
-deeplabcut.filterpredictions(config_path, ['path/to/my_current_project/my-current-DLC-project/videos/my_current_mouse/my_current_mouse_video.mkv'] (or 'path/to/video/folder/'), videotype='.mkv')
+
+# unfiltered results
 deeplabcut.plot_trajectories(config_path, ['path/to/my_current_project/my-current-DLC-project/videos/my_current_mouse/my_current_mouse_video.mkv'])
+deeplabcut.create_labeled_video(config_path, ['path/to/my_current_project/my-current-DLC-project/videos/my_current_mouse/my_current_mouse_video.mkv'], draw_skeleton=True/False, save_frames=True/False, filtered=False)
+deeplabcut.analyzeskeleton(config_path, ['path/to/my_current_project/my-current-DLC-project/videos/my_current_mouse/my_current_mouse_video.mkv'], shuffle=1, trainingsetindex=0, save_as_csv=True, filtered=False)
+
+# filtered results
+deeplabcut.filterpredictions(config_path, ['path/to/my_current_project/my-current-DLC-project/videos/my_current_mouse/my_current_mouse_video.mkv'] (or 'path/to/video/folder/'), videotype='.mkv')
 deeplabcut.plot_trajectories(config_path, ['path/to/my_current_project/my-current-DLC-project/videos/my_current_mouse/my_current_mouse_video.mkv'], filtered=True)
-deeplabcut.create_labeled_video(config_path, ['path/to/my_current_project/my-current-DLC-project/videos/my_current_mouse/my_current_mouse_video.mkv'], draw_skeleton=True/False, filtered=True/False, save_frames=True)
+deeplabcut.create_labeled_video(config_path, ['path/to/my_current_project/my-current-DLC-project/videos/my_current_mouse/my_current_mouse_video.mkv'], draw_skeleton=True/False, save_frames=True/False, filtered=True)
+deeplabcut.analyzeskeleton(config_path, ['path/to/my_current_project/my-current-DLC-project/videos/my_current_mouse/my_current_mouse_video.mkv'], shuffle=1, trainingsetindex=0, save_as_csv=True, filtered=True) # does not work presently
 
 # refine network
 deeplabcut.extract_outlier_frames(config_path, ['path/to/my_current_project/my-current-DLC-project/videos/my_current_mouse/my_current_mouse_video.mkv'])

@@ -5,6 +5,7 @@ import numpy as np
 import detect_outliers
 from plot_on_mouse import plm
 import matplotlib.pyplot as plt
+from operator import itemgetter
 from collections import defaultdict
 from behaviortimes2frames import translate_times_to_frames
 
@@ -50,7 +51,7 @@ def consecutive_groups(iterable, ordering=lambda x: x):
         [[1, 2], [11, 12], [21, 22]]
 
     """
-    for k, g in groupby(
+    for k, g in itertools.groupby(
         enumerate(iterable), key=lambda x: x[0] - ordering(x[1])
     ):
         yield map(itemgetter(1), g)
